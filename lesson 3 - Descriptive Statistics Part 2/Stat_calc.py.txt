@@ -1,0 +1,50 @@
+print("enter numbers if you finished enter 'f' ")
+cont = []
+li = []
+while True:
+    num = input(">> ")
+    if num == 'f':
+        break
+    if int(num) in li:
+        cont.append(li.count(int(num))+1)
+    else:
+        cont.append(1)
+    li.append(int(num))
+MAX = max(cont)
+mean = sum(li) / len(li)
+print("length :{}".format(len(li)))
+print("Sorted ", sorted(li))
+print("Sum :{}".format(sum(li)))
+
+print("Mean : {}".format(mean))
+sortedList = sorted(li)
+if len(sortedList) % 2 == 0:
+    
+    num1 = sortedList[int(len(sortedList) / 2) -1]
+    num2 = sortedList[int(len(sortedList) / 2) ]
+    mode = (num1 + num2) / 2.0
+    print("Median : {}".format(mode))
+else:
+    num = int(len(sortedList)/2) + 1
+    mode = sortedList[num-1]
+    print("Median : {}".format(mode))
+
+mode = []
+for x , val in enumerate(cont):
+    if MAX == 1:
+        mode = li
+    else:
+        if val == MAX:
+            num = sortedList[x]
+            if num not in mode:
+                mode.append(num)
+print("Mode : ",mode)
+
+sqLi = []
+import math
+for x in li:
+    sqLi.append(math.pow((x-mean),2))
+var = sum(sqLi) / len(sqLi)
+SD = math.sqrt(var)
+print("Variance  : " , var )
+print("Standard Deviation" , SD)
